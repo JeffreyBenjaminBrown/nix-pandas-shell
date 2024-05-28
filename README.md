@@ -1,24 +1,25 @@
-# PITFALL: Two environments!
+# What this is
 
-This environment has two layers:
-Nix and, within that, virtualenv.
+This repo is a Nix/Python virtual environment
+I expect to use for data science.
 
 
-# How to activate this environment
+# PITFALL: Two layers of environment.
 
-```
-nix-shell pip-shell.nix
-python -m venv .venv # Build env. Only needs to run once.
-PS1="[nix @ \W ] "   # Shorten the prompt
-source .venv/bin/activate
-pip3 install  --upgrade -r requirements.txt
+This consists of a Nix shell and,
+*within that*, a (Python) virtualenv.
 
-```
 
-To exit the Python shell, and then the Nix environment, run
+# How to activate the environment
 
 ```
-deactivate
-
+  nix-shell -p python3 --command "python -m venv .venv --copies"
+  PS1="[nix @ \W ] "   # Shorten the prompt
+  source .venv/bin/activate
+  pip3 install  --upgrade -r requirements.txt
 ```
-and then use `Ctrl-D` or something.
+
+# How to deactivate it
+```
+  deactivate
+```
