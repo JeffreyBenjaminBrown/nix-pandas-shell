@@ -1,25 +1,24 @@
-# What this is
+## What this is
 
 This repo is a Nix/Python virtual environment
 I expect to use for data science.
 
 
-# PITFALL: Two layers of environment.
+## PITFALLs
+
+# Two layers of environment
 
 This consists of a Nix shell and,
 *within that*, a (Python) virtualenv.
 
+# Dependencies not in nixpkgs could cause a headache.
 
-# How to activate the environment
+So far, there are none.
+If that problem should arise, see
+https://wiki.nixos.org/wiki/Python
 
-```
-  nix-shell -p python3 --command "python -m venv .venv --copies"
-  PS1="[nix @ \W ] "   # Shorten the prompt
-  source .venv/bin/activate
-  pip3 install  --upgrade -r requirements.txt
-```
 
-# How to deactivate it
-```
-  deactivate
-```
+## Usage
+
+Just run `nix-shell`!
+And after that, probably, `ipython`.
